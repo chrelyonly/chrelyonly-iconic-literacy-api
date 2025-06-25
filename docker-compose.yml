@@ -1,9 +1,8 @@
 services:
   chrelyonly-iconic-literacy-api:
-    #    build:
-    #      dockerfile: Dockerfile
-    image: library/debian:latest
-#    image: python:3.13
+#    build:
+#      dockerfile: Dockerfile
+    image: docker.1ms.run/python:3.13-slim
     container_name: chrelyonly-iconic-literacy-api
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -16,7 +15,7 @@ services:
       my-network:
         ipv4_address: 172.20.0.31
     # 运行应用
-    command: ["./main"]
+    command: ["/app/start.sh"]
 #    command: ["sh", "-c", "tail -f /dev/null"]
 
 networks:

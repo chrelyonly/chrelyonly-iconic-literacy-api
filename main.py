@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import ddddocr
-import os
 import base64
 
 app = Flask(__name__)
