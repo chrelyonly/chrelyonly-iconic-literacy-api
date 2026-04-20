@@ -1,19 +1,17 @@
 services:
   chrelyonly-iconic-literacy-api:
-#    build:
-#      dockerfile: Dockerfile
+    mem_limit: 512m
     image: docker.1ms.run/python:3.13-slim
     container_name: chrelyonly-iconic-literacy-api
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:roro
       - /www/dk_project/dk_app/chrelyonly-iconic-literacy-api/app:/app
     working_dir: /app
-    dns:
-      - 114.114.114.114
-      - 1.1.1.1  # Cloudflare DNS
     networks:
-      my-network:
-        ipv4_address: 172.20.0.31
+      - my-network
     # 运行应用
     command: ["/app/start.sh"]
 #    command: ["sh", "-c", "tail -f /dev/null"]
